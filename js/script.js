@@ -1,4 +1,6 @@
-document.querySelector('.grid').addEventListener('mouseover', function(e) {
+document.querySelector('.grid').addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+
     if (e.target.tagName === 'IMG') { // Check if the images only is clicked
         
         var imgWrapper = document.createElement("div"); // create a div in the memory
@@ -9,6 +11,9 @@ document.querySelector('.grid').addEventListener('mouseover', function(e) {
             currentImgSrc = e.target.src; // grab the src of the current targeted img
         img.src = currentImgSrc.substr(0, currentImgSrc.length - 7) + ".jpg"; // set the src for the neweley created img
 
+        imgWrapper.style.left = e.offsetX + 10 + "px";
+        imgWrapper.style.top = e.offsetY + 10 + "px";
+
         imgWrapper.appendChild(img); // append the img to the div
 
         e.target.addEventListener("mouseout", function handler(d) { // add event handler for the mouseout
@@ -16,6 +21,11 @@ document.querySelector('.grid').addEventListener('mouseover', function(e) {
             myNode.parentNode.removeChild(myNode); // remove the div when mouse out the img
             e.target.removeEventListener("mouseout", handler, false); // remove the event handle not to cause a lot of errors
         }, false);
+        
+        e.target.addEventListener("mousemove", function(f) {
+            imgWrapper.style.left = f.offsetX + 10 + "px";
+            imgWrapper.style.top = f.offsetY + 10 + "px";
+        });
   
     } // check to see that I clicked on IMG only
   }, false); // Mouse Over Event
