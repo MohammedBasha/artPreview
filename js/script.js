@@ -11,8 +11,8 @@ document.querySelector('.grid').addEventListener('contextmenu', function(e) {
             currentImgSrc = e.target.src; // grab the src of the current targeted img
         img.src = currentImgSrc.substr(0, currentImgSrc.length - 7) + ".jpg"; // set the src for the neweley created img
 
-        imgWrapper.style.left = e.offsetX + 10 + "px";
-        imgWrapper.style.top = e.offsetY + 10 + "px";
+        imgWrapper.style.left = e.offsetX + 10 + "px"; // set the left position
+        imgWrapper.style.top = e.offsetY + 10 + "px"; // set the top position
 
         imgWrapper.appendChild(img); // append the img to the div
 
@@ -22,9 +22,9 @@ document.querySelector('.grid').addEventListener('contextmenu', function(e) {
             e.target.removeEventListener("mouseout", handler, false); // remove the event handle not to cause a lot of errors
         }, false);
         
-        e.target.addEventListener("mousemove", function(f) {
-            imgWrapper.style.left = f.offsetX + 10 + "px";
-            imgWrapper.style.top = f.offsetY + 10 + "px";
+        e.target.addEventListener("mousemove", function(f) { // add event listner for the mouse move
+            imgWrapper.style.left = f.offsetX + 10 + "px"; // set the left position
+            imgWrapper.style.top = f.offsetY + 10 + "px"; // set the top position
         });
   
     } // check to see that I clicked on IMG only
