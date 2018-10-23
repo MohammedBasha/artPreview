@@ -30,7 +30,7 @@ ul li {
 ul li>img {
   width: 100px;
   border: 1px solid #FCF4DC;
-  cursor: url(images/magnifying_glass.png), auto;
+  cursor: zoom-in;
 }
 
 ul li {
