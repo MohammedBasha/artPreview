@@ -10,6 +10,12 @@ document.querySelector('.grid').addEventListener('mouseover', function(e) {
         img.src = currentImgSrc.substr(0, currentImgSrc.length - 7) + ".jpg"; // set the src for the neweley created img
 
         imgWrapper.appendChild(img); // append the img to the div
+
+        e.target.addEventListener("mouseout", function handler(d) { // add event handler for the mouseout
+            var myNode = d.target.parentNode.querySelector("div.preview"); // get the .preview div
+            myNode.parentNode.removeChild(myNode); // remove the div when mouse out the img
+            e.target.removeEventListener("mouseout", handler, false); // remove the event handle not to cause a lot of errors
+        }, false);
   
     } // check to see that I clicked on IMG only
   }, false); // Mouse Over Event
